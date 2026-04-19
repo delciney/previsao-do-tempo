@@ -33,9 +33,12 @@ interface WeatherResults {
   forecast: Forecast[];
 }
 
+const HG_WEATHER_URL = "https://api.hgbrasil.com/weather";
+
 async function getWeather(cityName: string): Promise<WeatherResults> {
+  const key = process.env.chave_hgbrasil_weather;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"}/api/weather?city_name=${encodeURIComponent(cityName)}`,
+    `${HG_WEATHER_URL}?city_name=${encodeURIComponent(cityName)}&key=${key}`,
     { cache: "no-store" }
   );
   const data = await res.json();
