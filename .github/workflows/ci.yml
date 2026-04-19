@@ -21,6 +21,5 @@ jobs:
           cache-dependency-path: previsaodotempo/package-lock.json
       - run: npm ci
       - run: npm run lint
+      - run: npm test
       - run: npm run build
-        env:
-          chave_hgbrasil_weather: ${{ secrets.CHAVE_HGBRASIL_WEATHER }}
